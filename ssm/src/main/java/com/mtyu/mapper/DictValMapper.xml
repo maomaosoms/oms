@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.mtyu.dao.DictValDao">  
+<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！-->  
+    <resultMap id="BaseResultMap" type="com.mtyu.pojo.DictVal">  
+        <result column="businessTypeId" property="businessTypeId" jdbcType="VARCHAR" />  
+        <result column="busiId" property="busiId" jdbcType="VARCHAR" />  
+        <result column="busiValue" property="busiValue" jdbcType="VARCHAR" />
+    </resultMap>  
+    <!-- 查询单条记录 -->  
+    <select id="getDictVal" parameterType="com.mtyu.pojo.DictVal" resultMap="BaseResultMap">  
+        SELECT t.businessTypeId,t.busiId,t.busiValue FROM `t_dictval` t 
+        WHERE t.businessTypeId = #{businessTypeId} and t.busiId=#{busiId}
+    </select>
+</mapper>  
